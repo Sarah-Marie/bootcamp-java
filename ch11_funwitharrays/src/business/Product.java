@@ -1,0 +1,87 @@
+package business;
+import java.awt.Graphics;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.text.NumberFormat;
+
+public class Product implements Printable, Cloneable {
+	
+	
+	// 1) define some instance variables
+	private String code;
+	private String description;
+	private double price;
+	private static int numberOfObjects;
+	
+	// 2) define constructor(s)
+	// empty/default constructor
+	public Product () {
+		// explicitly initialize variables
+		code = "";
+		description = "";
+		price = 0;
+		numberOfObjects++;
+		
+		
+	}
+	// fully loaded constructor (all variables)
+	public Product(String code, String description, double price) {
+		super();
+		this.code = code;
+		this.description = description;
+		this.price = price;
+		numberOfObjects++;
+	}
+	
+	
+	// 3) define getters/setters
+	public String getCode() {
+		return code;
+	}
+	
+	public void setCode(String cd) {
+		code = cd;
+		
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	public String getPriceFormatted() {
+		NumberFormat cf = NumberFormat.getCurrencyInstance();
+		return cf.format(price);
+	}
+	
+	// 4) (optional) toString()
+	@Override
+	public String toString() {
+		return "Product [code=" + code + ", description=" + description + ", price=" + price + ", # of objects="+numberOfObjects+"]";
+	}
+	public void print() {
+		System.out.println(description + "|"+ getPriceFormatted());
+	}
+	
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
+	@Override
+	public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+}
