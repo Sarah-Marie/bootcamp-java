@@ -10,10 +10,10 @@ public class PetStoreApp {
 	// this list should be defined as static instance variable
 	private static java.util.List<Pet> pets = new ArrayList<Pet>();
 
-	public void List() {
+	public void list() {
 		pets = new ArrayList<Pet>();
 	
-	
+	}
 
 	
 
@@ -71,7 +71,7 @@ public class PetStoreApp {
 
 	private static void addPet() {
 		// prompt user for pet info
-		int id = Console.getInt("Pet ID:  ", id, (int) Double.POSITIVE_INFINITY);
+		int id = Console.getInt("Pet ID:  ", 0, (int) Double.POSITIVE_INFINITY);
 		String type = Console.getString("Type? ", true);
 		String species = Console.getString("Species? ", true);
 		String name = Console.getString("Name? ", true);
@@ -87,11 +87,6 @@ public class PetStoreApp {
 	}
 
 	private static void listPets() {
-		// get list of pets p 389?
-		///FOR LOOP IN HERE
-
-		// ?? petsList.list(pets);
-		// loop through the list of pets and print each one to the console
 		
 		for(Pet p : pets) {
 			System.out.println(p);
@@ -100,18 +95,19 @@ public class PetStoreApp {
 
 	private static Pet adoptPet() {
 		Pet adoptPet;
-		Pet p = adoptPet;
+		Pet p = null;
 		while (p == null) {
 			int id = Console.getInt("Pet ID: ", 0, (int) Double.POSITIVE_INFINITY);
 			p = Pet.adopt(id);
 			System.out.println();
-
+			// display confirmation message
+						System.out.println("Pet adopted!");
+						System.out.println();
 			return p;
 
-			// display confirmation message
-			System.out.println("Pet adopted!");
-			System.out.println();
+			
 		}
+		return p;
 
 	}
 
