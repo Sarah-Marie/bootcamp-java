@@ -7,8 +7,28 @@ import business.Pet;
 import util.Console;
 
 public class PetStoreApp {
+	// this list should be defined as static instance variable
+	private static java.util.List<Pet> pets = new ArrayList<Pet>();
+
+	public void List() {
+		pets = new ArrayList<Pet>();
+	
+	
+
+	
 
 	public static void main(String[] args) {
+		
+		// these 2 statements should be atop the main method
+		Pet p1 = new Pet(1, "Cat", "Domestic Short Hair", "Dora", 16);
+		Pet p2 = new Pet(2, "Dog", "Yellow Lab", "Arlo", 5);
+		// TODO declare list of pets
+		
+		pets.add(p1);
+	 pets.add(p2);
+		
+		
+		
 		// Welcome
 		System.out.println("Welcome to the Pet Store App!");
 		System.out.println();
@@ -24,9 +44,7 @@ public class PetStoreApp {
 			// Get user input
 			command = Console.getString("Command?: ", true);
 
-			// Do business logic
-
-			// Display results
+			// switch statements
 			switch (command) {
 			case "list":
 				listPets();
@@ -38,7 +56,6 @@ public class PetStoreApp {
 				adoptPet();
 				break;
 			case "exit":
-				// do nothing-exit
 				break;
 			default:
 				System.out.println("Invalid Entry. Try again.");
@@ -51,18 +68,18 @@ public class PetStoreApp {
 
 		System.out.println("Bye");
 	}
-	
 
 	private static void addPet() {
 		// prompt user for pet info
-		int id = Console.getInt("Pet ID:  ", 0, (int) Double.POSITIVE_INFINITY);
+		int id = Console.getInt("Pet ID:  ", id, (int) Double.POSITIVE_INFINITY);
 		String type = Console.getString("Type? ", true);
 		String species = Console.getString("Species? ", true);
 		String name = Console.getString("Name? ", true);
 		int age = Console.getInt("Age? ", 0, (int) Double.POSITIVE_INFINITY);
 
 		Pet p = new Pet(0, type, species, name, age);
-		Pet.add(p);
+		// Pet.add(p);
+		// TODO add p to list of pets
 
 		// display confirmation message
 		System.out.println("Pet added!");
@@ -70,17 +87,17 @@ public class PetStoreApp {
 	}
 
 	private static void listPets() {
-		// get list of pets
-		List<Pet> pets = new ArrayList<>();
-		Pet p1 = new Pet(1, "Cat", "Domestic Short Hair", "Dora", 16);
-		Pet p2 = new Pet(2, "Dog", "Yellow Lab", "Arlo", 5);
+		// get list of pets p 389?
+		///FOR LOOP IN HERE
 
-		petsList.list(pets);
-
+		// ?? petsList.list(pets);
+		// loop through the list of pets and print each one to the console
+		
+		for(Pet p : pets) {
+			System.out.println(p);
+	}
 	}
 
-	
- 
 	private static Pet adoptPet() {
 		Pet adoptPet;
 		Pet p = adoptPet;
@@ -88,16 +105,16 @@ public class PetStoreApp {
 			int id = Console.getInt("Pet ID: ", 0, (int) Double.POSITIVE_INFINITY);
 			p = Pet.adopt(id);
 			System.out.println();
-		
 
-		return p;
+			return p;
 
-		// display confirmation message
-		System.out.println("Pet adopted!");
-		System.out.println();
+			// display confirmation message
+			System.out.println("Pet adopted!");
+			System.out.println();
+		}
+
 	}
 
-	}
 
 	private static void displayMenu() {
 		StringBuilder menu = new StringBuilder("COMMAND MENU\n");
@@ -106,8 +123,9 @@ public class PetStoreApp {
 		menu.append("adopt    - Adopt a pet\n");
 		menu.append("exit   - Exit the Program\n");
 		System.out.println(menu);
-	
+
+	}
 
 }
 
-} }
+
