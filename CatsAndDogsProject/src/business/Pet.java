@@ -1,5 +1,7 @@
 package business;
 
+import java.util.List;
+
 public class Pet {
 	private int id;
 	private String type;
@@ -54,6 +56,10 @@ public class Pet {
 	public static Pet adopt(int id2) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public static void add(List<Pet> pets) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

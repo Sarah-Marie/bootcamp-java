@@ -12,23 +12,19 @@ public class PetStoreApp {
 
 	public void list() {
 		pets = new ArrayList<Pet>();
-	
+
 	}
 
-	
-
 	public static void main(String[] args) {
-		
+
 		// these 2 statements should be atop the main method
 		Pet p1 = new Pet(1, "Cat", "Domestic Short Hair", "Dora", 16);
 		Pet p2 = new Pet(2, "Dog", "Yellow Lab", "Arlo", 5);
 		// TODO declare list of pets
-		
+
 		pets.add(p1);
-	 pets.add(p2);
-		
-		
-		
+		pets.add(p2);
+
 		// Welcome
 		System.out.println("Welcome to the Pet Store App!");
 		System.out.println();
@@ -77,8 +73,10 @@ public class PetStoreApp {
 		String name = Console.getString("Name? ", true);
 		int age = Console.getInt("Age? ", 0, (int) Double.POSITIVE_INFINITY);
 
-		Pet p = new Pet(0, type, species, name, age);
-		// Pet.add(p);
+		Pet p = new Pet(id, type, species, name, age);
+		business.Pet addPet;
+		
+		pets.add(p);
 		// TODO add p to list of pets
 
 		// display confirmation message
@@ -87,30 +85,28 @@ public class PetStoreApp {
 	}
 
 	private static void listPets() {
-		
-		for(Pet p : pets) {
+
+		for (Pet p : pets) {
 			System.out.println(p);
-	}
+		}
 	}
 
 	private static Pet adoptPet() {
-		Pet adoptPet;
+	
 		Pet p = null;
 		while (p == null) {
 			int id = Console.getInt("Pet ID: ", 0, (int) Double.POSITIVE_INFINITY);
 			p = Pet.adopt(id);
 			System.out.println();
 			// display confirmation message
-						System.out.println("Pet adopted!");
-						System.out.println();
+			System.out.println("Pet adopted!");
+			System.out.println();
 			return p;
 
-			
 		}
 		return p;
 
-	}
-
+	}    
 
 	private static void displayMenu() {
 		StringBuilder menu = new StringBuilder("COMMAND MENU\n");
@@ -123,5 +119,3 @@ public class PetStoreApp {
 	}
 
 }
-
-
