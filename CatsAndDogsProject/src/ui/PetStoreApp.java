@@ -66,6 +66,7 @@ public class PetStoreApp {
 	}
 
 	private static void addPet() {
+		System.out.println("Add a pet:");
 		// prompt user for pet info
 		int id = Console.getInt("Pet ID:  ", 0, (int) Double.POSITIVE_INFINITY);
 		String type = Console.getString("Type? ", true);
@@ -85,6 +86,7 @@ public class PetStoreApp {
 	}
 
 	private static void listPets() {
+		System.out.println("List of all pets:");
 
 		for (Pet p : pets) {
 			System.out.println(p);
@@ -92,7 +94,7 @@ public class PetStoreApp {
 	}
 
 	private static Pet adoptPet() {
-	
+	System.out.println("Adopt a pet!");
 		Pet p = null;
 		while (p == null) {
 			int id = Console.getInt("Pet ID: ", 0, (int) Double.POSITIVE_INFINITY);
